@@ -4,399 +4,1048 @@
     <title>Archit Keshav Gangal - Portfolio</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --navy: #0f1e35;
+            --teal: #1a7f6e;
+            --teal-light: #25b09a;
+            --gold: #c9a84c;
+            --cream: #f7f4ee;
+            --white: #ffffff;
+            --gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --border: #e5e0d8;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #fff; }
-        header { position: sticky; top: 0; width: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 1000; }
-        nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        nav h1 { color: #fff; font-size: 1.5rem; margin-bottom: 1rem; }
-        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 2rem; }
-        nav a { color: #fff; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-        nav a:hover { color: #38bdae; }
-        .social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
-        .social-icons a { color: #38bdae; font-size: 1.5rem; transition: color 0.3s; }
-        .social-icons a:hover { color: #2E5090; }
-        .social-icons svg { width: 28px; height: 28px; }
-        #banner { height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2000') center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; position: relative; }
-        #banner .content { max-width: 800px; padding: 2rem; }
-        #banner h2 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
-        #banner p { font-size: 1.3rem; margin-bottom: 2rem; line-height: 1.8; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
-        #banner img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #fff; margin-bottom: 2rem; object-fit: cover; }
-        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-        section:nth-child(even) { background: #f8f9fa; }
-        h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #2E5090; border-bottom: 3px solid #38bdae; padding-bottom: 1rem; display: inline-block; }
-        h3 { color: #2E5090; font-size: 1.8rem; margin-bottom: 1rem; }
-        h4 { color: #38bdae; font-size: 1.3rem; margin-bottom: 0.5rem; }
-        p, li { font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 1rem; }
-        .download-btn { display: inline-block; padding: 1rem 2rem; background: #2E5090; color: #fff; text-decoration: none; border-radius: 5px; margin-top: 1rem; transition: background 0.3s; }
-        .download-btn:hover { background: #1e3a6f; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .skill-item h4 { margin-bottom: 0.5rem; }
-        .skill-item ul { list-style: none; padding-left: 0; }
-        .skill-item li { padding: 0.3rem 0; position: relative; padding-left: 1.2rem; }
-        .skill-item li:before { content: "▸"; position: absolute; left: 0; color: #38bdae; }
-        .education-card { background: #2E5090; color: #fff; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; }
-        .education-card h3 { color: #fff; }
-        .education-card h4 { color: #38bdae; }
-        .education-card p { color: rgba(255,255,255,0.9); }
-        .timeline { position: relative; padding-left: 3rem; }
-        .timeline:before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #2E5090; }
-        .timeline-item { position: relative; margin-bottom: 3rem; padding: 1.5rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .timeline-item:before { content: ''; position: absolute; left: -3.75rem; top: 1.5rem; width: 15px; height: 15px; border-radius: 50%; background: #38bdae; border: 3px solid #fff; box-shadow: 0 0 0 3px #2E5090; }
-        .timeline-item h3 { margin-bottom: 0.3rem; }
-        .timeline-item .company { color: #38bdae; font-weight: 600; font-size: 1.2rem; }
-        .timeline-item .date { color: #888; font-size: 0.95rem; margin-bottom: 1rem; }
-        .timeline-item ul { list-style: none; padding-left: 0; }
-        .timeline-item li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
-        .timeline-item li:before { content: "✓"; position: absolute; left: 0; color: #38bdae; font-weight: bold; }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .project-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .project-card:hover { transform: translateY(-10px); }
-        .project-image { width: 100%; height: 200px; background: linear-gradient(135deg, #2E5090, #38bdae); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
-        .project-content { padding: 1.5rem; }
-        .project-content h3 { font-size: 1.4rem; margin-bottom: 1rem; }
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .tech-tag { background: rgba(56,189,174,0.2); color: #2E5090; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; border: 1px solid #38bdae; }
-        .contact-form { max-width: 600px; margin: 2rem auto; }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; font-size: 1rem; }
-        .form-group textarea { min-height: 150px; resize: vertical; }
-        .submit-btn { background: #2E5090; color: #fff; padding: 1rem 2rem; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
-        .submit-btn:hover { background: #1e3a6f; }
-        footer { background: #1a1b27; color: #fff; text-align: center; padding: 2rem; }
-        footer p { color: rgba(255,255,255,0.7); }
-        /* DBLens badge */
-        .project-badge { display: inline-block; background: #38bdae; color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
-        .project-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-        .project-link { display: inline-flex; align-items: center; gap: 5px; color: #2E5090; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-        .project-link:hover { color: #38bdae; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--navy);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(15, 30, 53, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--gold); }
+
+        /* ── HERO ── */
+        #banner {
+            min-height: 100vh;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 20% 50%, rgba(26,127,110,0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.08) 0%, transparent 70%);
+        }
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero-content {
+            position: relative;
+            max-width: 760px;
+        }
+        .hero-img-wrap {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--gold), var(--teal-light));
+        }
+        .hero-img-wrap img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--navy);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201,168,76,0.15);
+            color: var(--gold);
+            border: 1px solid rgba(201,168,76,0.35);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+        }
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            color: var(--white);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+        .hero-content h2 span { color: var(--gold); }
+        .hero-content p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+        .hero-social a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .hero-social a:hover {
+            color: var(--white);
+            border-color: var(--gold);
+            background: rgba(201,168,76,0.08);
+        }
+        .hero-social svg { width: 16px; height: 16px; }
+        .btn-primary {
+            display: inline-block;
+            padding: 0.85rem 2.2rem;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background: #d4b45a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 5rem 2rem;
+        }
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.6rem;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .section-title span { color: var(--teal); }
+        .section-divider {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--teal-light));
+            border-radius: 2px;
+            margin-bottom: 3rem;
+        }
+
+        /* ── ABOUT ── */
+        #one { background: var(--cream); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .about-text p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.85;
+            margin-bottom: 1.2rem;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--teal);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .stat-card .label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+        .opt-badge {
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(26,127,110,0.08);
+            border: 1px solid rgba(26,127,110,0.25);
+            color: var(--teal);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ── SKILLS ── */
+        #two { background: var(--white); }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(15,30,53,0.08);
+        }
+        .skill-card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .skill-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--navy);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .skill-tag {
+            background: var(--white);
+            border: 1px solid var(--border);
+            color: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        /* ── EXPERIENCE ── */
+        #four { background: var(--cream); }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--teal-light));
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-left: 1.5rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -2.65rem;
+            top: 2rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+        .timeline-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .timeline-date {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--teal);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .timeline-company {
+            color: var(--teal);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+        .timeline-item ul { list-style: none; }
+        .timeline-item li {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.75;
+            padding: 0.35rem 0 0.35rem 1.4rem;
+            position: relative;
+            border-bottom: 1px solid rgba(229,224,216,0.5);
+        }
+        .timeline-item li:last-child { border-bottom: none; }
+        .timeline-item li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.85rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        /* ── EDUCATION ── */
+        #three { background: var(--navy); }
+        #three .section-title { color: var(--white); }
+        #three .section-label { color: var(--gold); }
+        .edu-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+        .edu-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+        }
+        .edu-card h4 {
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+        .edu-card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .edu-gpa {
+            text-align: center;
+            background: rgba(201,168,76,0.12);
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            white-space: nowrap;
+        }
+        .edu-gpa .gpa-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+        .edu-gpa .gpa-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            display: block;
+        }
+
+        /* ── CONTACT ── */
+        #six { background: var(--white); }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--navy);
+            background: var(--cream);
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--teal);
+        }
+        .form-group textarea { min-height: 140px; resize: vertical; }
+        .submit-btn {
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.9rem 2.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: all 0.2s;
+        }
+        .submit-btn:hover {
+            background: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+
+        /* ── HAMBURGER ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+            background: none;
+            border: none;
+            z-index: 1100;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0; right: 0;
+            background: rgba(15,30,53,0.98);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+            padding: 1.5rem 2rem;
+            z-index: 999;
+            flex-direction: column;
+            gap: 0;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: color 0.2s;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover { color: var(--gold); }
+
+        /* ── MOBILE BREAKPOINTS ── */
         @media (max-width: 768px) {
-            #banner h2 { font-size: 2rem; }
-            #banner p { font-size: 1.1rem; }
-            nav ul { flex-direction: column; gap: 0.5rem; }
-            h2 { font-size: 2rem; }
+            /* Nav */
+            nav ul { display: none; }
+            .hamburger { display: flex; }
+
+            /* Hero */
+            #banner { padding: 5rem 1.5rem 3rem; min-height: 100svh; }
+            .hero-img-wrap { width: 110px; height: 110px; margin-bottom: 1.5rem; }
+            .hero-badge { font-size: 0.7rem; padding: 0.35rem 1rem; }
+            .hero-social { flex-wrap: wrap; gap: 0.7rem; justify-content: center; }
+            .hero-social a { font-size: 0.8rem; padding: 0.45rem 0.8rem; }
+            .btn-primary { width: 100%; text-align: center; padding: 0.9rem 1rem; }
+
+            /* Sections */
+            section { padding: 3.5rem 1.25rem; }
+            .section-divider { margin-bottom: 2rem; }
+
+            /* About */
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-text p { font-size: 0.97rem; }
+            .about-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .stat-card { padding: 1.1rem; }
+            .stat-card .number { font-size: 1.6rem; }
+            .opt-badge { font-size: 0.8rem; padding: 0.5rem 1rem; }
+
+            /* Skills */
+            .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .skill-card { padding: 1.4rem; }
+
+            /* Education */
+            .edu-card {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.8rem 1.4rem;
+            }
+            .edu-card h3 { font-size: 1.2rem; }
+            .edu-gpa { padding: 1rem 1.5rem; }
+            .edu-gpa .gpa-num { font-size: 2rem; }
+
+            /* Timeline */
+            .timeline { padding-left: 1.2rem; }
+            .timeline-item {
+                margin-left: 1rem;
+                padding: 1.4rem;
+                margin-bottom: 2rem;
+            }
+            .timeline-dot { left: -2.1rem; top: 1.4rem; }
+            .timeline-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+            .timeline-date { font-size: 0.75rem; }
+            .timeline-item h3 { font-size: 1.05rem; }
+            .timeline-item li { font-size: 0.9rem; padding-left: 1.2rem; }
+
+            /* Projects grid */
+            #five .section-inner > div { grid-template-columns: 1fr !important; }
+
+            /* Contact */
+            .contact-form { padding: 0; }
+            .submit-btn { width: 100%; }
+
+            /* Footer */
+            footer { padding: 1.5rem 1rem; font-size: 0.8rem; }
+        }
+
+        @media (max-width: 400px) {
+            .hero-social { flex-direction: column; align-items: center; }
+            .hero-social a { width: 100%; justify-content: center; }
+            .about-stats { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <nav>
-            <h1>Portfolio</h1>
+            <div class="nav-logo">AKG</div>
             <ul>
                 <li><a href="#one">About</a></li>
                 <li><a href="#two">Skills</a></li>
                 <li><a href="#three">Education</a></li>
-                <li><a href="#four">Professional Experience</a></li>
+                <li><a href="#four">Experience</a></li>
                 <li><a href="#five">Projects</a></li>
                 <li><a href="#six">Contact</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
+    <!-- Mobile nav menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#one" class="mobile-nav-link">About</a>
+        <a href="#two" class="mobile-nav-link">Skills</a>
+        <a href="#three" class="mobile-nav-link">Education</a>
+        <a href="#four" class="mobile-nav-link">Experience</a>
+        <a href="#five" class="mobile-nav-link">Projects</a>
+        <a href="#six" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- ── HERO ── -->
     <section id="banner">
-        <div class="content">
-            <img src="https://raw.githubusercontent.com/architkgangal/architkgangal.github.io/main/Prof_image.jpeg" alt="Archit Keshav Gangal">
-            <h2>Archit Keshav Gangal</h2>
-            <p>Full Stack Developer with 6+ years of progressive experience architecting mission-critical financial services platforms, microservices ecosystems, and cloud-native solutions. Expertise in designing high-throughput transaction processing systems and distributed architectures.</p>
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-img-wrap">
+                <img src="https://raw.githubusercontent.com/architkgangal/architkgangal.github.io/main/Prof_image.jpeg" alt="Archit Keshav Gangal">
+            </div>
+            <div class="hero-badge">Technical Consultant &amp; Software Engineer</div>
+            <h2>Archit Keshav <span>Gangal</span></h2>
+            <p>6+ years delivering enterprise IT consulting and software engineering across insurance, finance, QSR, and automotive domains. Specializing in incident management, application support, and AI-driven solutions.</p>
+            <div class="hero-social">
+                <a href="https://github.com/architkgangal" target="_blank">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/archit-k-gangal/" target="_blank">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:archit.gangal@yahoo.com">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+                    Email
+                </a>
+            </div>
+            <a href="https://github.com/architkgangal/architkgangal.github.io/blob/main/Archit_Keshav_Gangal_Resume.pdf" class="btn-primary" download>Download Resume</a>
         </div>
     </section>
 
+    <!-- ── ABOUT ── -->
     <section id="one">
-        <h2>Archit Keshav Gangal</h2>
-        <div class="social-icons" style="margin-bottom: 2rem; justify-content: center;">
-            <a href="https://github.com/architkgangal" target="_blank">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 5px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/archit-k-gangal/" target="_blank">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 5px;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                LinkedIn
-            </a>
-            <a href="mailto:archit.gangal@yahoo.com">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 5px;"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
-                Email
-            </a>
-            <a href="tel:+1-970-818-1496">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 5px;"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/></svg>
-                Phone
-            </a>
+        <div class="section-inner">
+            <div class="section-label">Who I Am</div>
+            <h2 class="section-title">About <span>Me</span></h2>
+            <div class="section-divider"></div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am a Technical Consultant and Software Engineer with 6+ years of experience working across enterprise environments in insurance, finance, QSR, and automotive domains. My career spans IT consulting, application support, and software engineering — giving me a rare combination of client-facing communication skills and hands-on technical depth.</p>
+                    <p>At Allstate Insurance, I contributed to a Java and Spring Boot microservices product team, managed Kafka-based queue workflows, handled major incident management through war rooms and RCA documentation, and monitored production platforms using Datadog, Splunk, and Grafana.</p>
+                    <p>At Capgemini, I served as a technical consultant for a US-based QSR client, managing the full incident lifecycle, leading change management, developing runbooks and SOPs, and delivering structured reporting to client stakeholders.</p>
+                    <p>Alongside my professional experience, I have built AI-powered applications including a RAG-based literature review system and an open-source database optimization CLI tool, strengthening my depth in Python and modern AI application development.</p>
+                    <div class="opt-badge">✦ Authorized to work in the USA — STEM OPT (3 years)</div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="number">6+</div>
+                        <div class="label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">3</div>
+                        <div class="label">Enterprise Clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">3.93</div>
+                        <div class="label">Graduate GPA</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">5+</div>
+                        <div class="label">AI/Data Projects</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>Full Stack Developer with 6+ years of experience delivering enterprise applications across finance, insurance, QSR, and telecom domains.</p>
-        <p>Strong expertise in Python, Java, C++, C#, .NET Core, React, Angular, and ASP.Net for end-to-end application development.</p>
-        <p>Proven ability to design and deploy scalable backend systems, responsive frontends, and RESTful microservices.</p>
-        <p>Hands-on experience integrating AI/ML models using TensorFlow, PyTorch, and Scikit-learn into production workflows.</p>
-        <p>Skilled in cloud-native development, MLOps pipelines, and data engineering using AWS, Azure, GCP, and SQL databases.</p>
-        <p>Authorized to work in the USA on STEM OPT for up to 3 years.</p>
-        <a href="https://github.com/architkgangal/architkgangal.github.io/blob/main/Archit_Keshav_Gangal_Resume.pdf" class="download-btn" download>Download CV</a>
     </section>
 
+    <!-- ── SKILLS ── -->
     <section id="two">
-        <h2>What I can do</h2>
-        <p>Proficient in utilizing modern technologies and frameworks for building scalable, cloud-native solutions.</p>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <h4>Programming</h4>
-                <ul>
-                    <li>Java/J2EE 17, Spring Boot</li>
-                    <li>Python (Flask, FastAPI, Django)</li>
-                    <li>C++, C#, .NET Core</li>
-                    <li>JavaScript, TypeScript</li>
-                    <li>Golang, Shell Scripting</li>
-                </ul>
-            </div>
-            <div class="skill-item">
-                <h4>Architecture & Design</h4>
-                <ul>
-                    <li>Microservices Architecture</li>
-                    <li>Event-Driven Systems</li>
-                    <li>API Design & Gateway</li>
-                    <li>Design Patterns (GoF, Enterprise)</li>
-                    <li>Security Best Practices</li>
-                </ul>
-            </div>
-            <div class="skill-item">
-                <h4>Cloud & DevOps</h4>
-                <ul>
-                    <li>AWS (EC2, S3, RDS, Lambda, CDK)</li>
-                    <li>Azure, Google Cloud Platform</li>
-                    <li>Docker, Kubernetes</li>
-                    <li>Terraform, Ansible, Jenkins</li>
-                    <li>CI/CD Automation</li>
-                </ul>
-            </div>
-            <div class="skill-item">
-                <h4>Databases & Messaging</h4>
-                <ul>
-                    <li>Oracle, MySQL, SQL Server</li>
-                    <li>MongoDB, Snowflake</li>
-                    <li>Apache Kafka, Event Streaming</li>
-                    <li>Redis, Caching Strategies</li>
-                </ul>
-            </div>
-            <div class="skill-item">
-                <h4>AI/ML & Data</h4>
-                <ul>
-                    <li>TensorFlow, PyTorch</li>
-                    <li>Scikit-learn, Pandas, NumPy</li>
-                    <li>Databricks, ML Pipelines</li>
-                    <li>Model Training & Deployment</li>
-                </ul>
-            </div>
-            <div class="skill-item">
-                <h4>Frontend Technologies</h4>
-                <ul>
-                    <li>React.js, Angular, AngularJS</li>
-                    <li>HTML5, CSS3, Tailwind</li>
-                    <li>jQuery, Node.js, ASP.Net</li>
-                    <li>Responsive Design</li>
-                </ul>
+        <div class="section-inner">
+            <div class="section-label">Capabilities</div>
+            <h2 class="section-title">Technical <span>Skills</span></h2>
+            <div class="section-divider"></div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-card-icon">⚙️</div>
+                    <h4>Languages & Frameworks</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Shell Scripting</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-icon">🤖</div>
+                    <h4>AI & Data Engineering</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LlamaIndex</span>
+                        <span class="skill-tag">Chroma</span>
+                        <span class="skill-tag">Ollama</span>
+                        <span class="skill-tag">RAG Architecture</span>
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">ETL Pipelines</span>
+                        <span class="skill-tag">Databricks</span>
+                        <span class="skill-tag">Pandas</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-icon">🗄️</div>
+                    <h4>Databases & Messaging</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">Apache Kafka</span>
+                        <span class="skill-tag">SQL Server</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-icon">☁️</div>
+                    <h4>Cloud & DevOps</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS (EC2, S3, RDS, Lambda)</span>
+                        <span class="skill-tag">Pivotal Cloud Foundry</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">CI/CD</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-icon">📊</div>
+                    <h4>Monitoring & Observability</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Datadog</span>
+                        <span class="skill-tag">Splunk</span>
+                        <span class="skill-tag">Kibana</span>
+                        <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">APM</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-icon">🤝</div>
+                    <h4>Consulting & ITSM</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Incident Management</span>
+                        <span class="skill-tag">RCA</span>
+                        <span class="skill-tag">Change Management</span>
+                        <span class="skill-tag">SLA Management</span>
+                        <span class="skill-tag">ServiceNow</span>
+                        <span class="skill-tag">JIRA</span>
+                        <span class="skill-tag">Agile / Scrum</span>
+                        <span class="skill-tag">Runbooks & SOPs</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ── EDUCATION ── -->
     <section id="three">
-        <h2>Education</h2>
-        <div class="education-card">
-            <h3>Colorado State University</h3>
-            <h4>Master of Science in Computer Information Systems</h4>
-            <p>August 2024 – December 2025</p>
-            <p><strong>Location:</strong> Fort Collins, Colorado</p>
-            <p><strong>GPA:</strong> 3.93/4.0</p>
-            <blockquote>
-                <p><strong>Concentration:</strong> Business Intelligence, Project Management</p>
-                <p><strong>Achievements:</strong> 2nd Place - Computer Science Department Hackathon, A+ grades in AI/ML courses</p>
-            </blockquote>
+        <div class="section-inner">
+            <div class="section-label">Academic Background</div>
+            <h2 class="section-title" style="color:#fff;">Education</h2>
+            <div class="section-divider"></div>
+            <div class="edu-card">
+                <div>
+                    <h3>Colorado State University</h3>
+                    <h4>Master of Science — Computer Information Systems</h4>
+                    <p>August 2024 – December 2025 &nbsp;·&nbsp; Fort Collins, Colorado</p>
+                    <p style="margin-top:0.8rem;">Concentration: Business Intelligence & Project Management</p>
+                    <p>🏆 2nd Place — CS Department Hackathon &nbsp;·&nbsp; A+ grades in AI/ML courses</p>
+                </div>
+                <div class="edu-gpa">
+                    <span class="gpa-num">3.93</span>
+                    <span class="gpa-label">GPA / 4.0</span>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- ── EXPERIENCE ── -->
     <section id="four">
-        <h2>Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Senior Full Stack Developer</h3>
-                <div class="company">Allstate Insurance</div>
-                <div class="date">August 2022 – July 2024</div>
-                <ul>
-                    <li>Led architecture modernization from monoliths to microservices using Java 17 & Spring Boot</li>
-                    <li>Architected ETL platforms processing 1M+ daily transactions with 99.7% uptime</li>
-                    <li>Reduced deployment time by 47% and improved system maintainability by 43%</li>
-                    <li>Implemented OAuth2 security, Kafka streaming, and AWS cloud-native patterns</li>
-                    <li>Built distributed systems with Kubernetes, Docker, and infrastructure-as-code</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h3>Associate Software Engineer</h3>
-                <div class="company">Capgemini</div>
-                <div class="date">March 2021 – August 2022</div>
-                <ul>
-                    <li>Managed multi-cloud infrastructure (AWS, Azure, GCP) with Terraform & Kubernetes</li>
-                    <li>Achieved 99.6% uptime and reduced operational costs by 23%</li>
-                    <li>Migrated legacy apps to microservices using C#, .NET Core, and Golang</li>
-                    <li>Reduced security incidents by 37% through API security frameworks</li>
-                    <li>Implemented monitoring solutions with Datadog, Grafana, and Splunk</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h3>Process Software Developer</h3>
-                <div class="company">Genpact</div>
-                <div class="date">May 2018 – February 2021</div>
-                <ul>
-                    <li>Architected cloud-native platforms on AWS with Java/J2EE & Python Django</li>
-                    <li>Built automation platforms reducing manual effort by 34%</li>
-                    <li>Developed data analytics solutions improving efficiency by 22%</li>
-                    <li>Implemented secure web services with React.js and MongoDB</li>
-                    <li>Managed CI/CD pipelines with Jenkins and Git</li>
-                </ul>
+        <div class="section-inner">
+            <div class="section-label">Career History</div>
+            <h2 class="section-title">Professional <span>Experience</span></h2>
+            <div class="section-divider"></div>
+            <div class="timeline">
+
+                <!-- Allstate -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <h3>IT Consultant | Software Engineer XP</h3>
+                            <div class="timeline-company">Allstate Insurance</div>
+                        </div>
+                        <span class="timeline-date">Aug 2022 – Jul 2024</span>
+                    </div>
+                    <ul>
+                        <li>Contributed to a Java and Spring Boot enterprise product team, performing code changes for user onboarding workflows and Kafka queue management within a distributed microservices architecture.</li>
+                        <li>Reviewed and modified Java and Spring Boot application code, worked directly with Kafka topics and queues, tested REST APIs using Postman, and managed development tasks and defect tracking through JIRA.</li>
+                        <li>Deployed and managed applications on Pivotal Cloud Foundry (PCF), supporting application lifecycle management including deployments, scaling, and environment configuration.</li>
+                        <li>Participated in major incident management by attending war rooms and bridge calls during production outages, coordinating between application, infrastructure, and business teams to drive resolution.</li>
+                        <li>Contributed to Root Cause Analysis (RCA) documentation post-incident, identifying failure patterns and supporting implementation of preventive measures.</li>
+                        <li>Monitored application health and proactively escalated alerts using Datadog, Splunk, Kibana, and Grafana, supporting production stability across critical insurance platforms.</li>
+                        <li>Supported CI/CD workflows using Jenkins and GitHub, and collaborated in an Agile environment through sprint planning, daily standups, and retrospectives.</li>
+                    </ul>
+                </div>
+
+                <!-- Capgemini -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Solutions Consultant</h3>
+                            <div class="timeline-company">Capgemini</div>
+                        </div>
+                        <span class="timeline-date">Mar 2021 – Aug 2022</span>
+                    </div>
+                    <ul>
+                        <li>Served as technical consultant for a US-based QSR client (Tropical Smoothie Cafe), advising on operational stability and delivering IT solutions to ensure continuity of business-critical systems in a 24x7 environment.</li>
+                        <li>Managed end-to-end incident lifecycle using ServiceNow and JIRA, consulting with client stakeholders to prioritize issues, define resolution strategies, and maintain SLA compliance.</li>
+                        <li>Led Root Cause Analysis (RCA) for major incidents, delivering structured post-incident reports with failure analysis and preventive recommendations to client leadership.</li>
+                        <li>Coordinated between vendor and client teams to assess, plan, and execute change requests, ensuring alignment on risk, impact, and rollback strategies throughout the change management lifecycle.</li>
+                        <li>Developed and maintained runbooks and SOPs that standardized support procedures, improving team consistency and reducing resolution time for recurring issues.</li>
+                        <li>Onboarded and mentored new team members on client systems, escalation workflows, and consulting best practices.</li>
+                        <li>Automated repetitive operational tasks using Shell scripting and leveraged SQL for data analysis and client-facing reporting.</li>
+                    </ul>
+                </div>
+
+                <!-- Genpact -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Process Developer</h3>
+                            <div class="timeline-company">Genpact</div>
+                        </div>
+                        <span class="timeline-date">May 2018 – Feb 2021</span>
+                    </div>
+                    <ul>
+                        <li>Consulted on credit operations for US-based automotive clients (Nissan and Infiniti), advising on back-office processing workflows and ensuring accuracy, compliance, and operational efficiency.</li>
+                        <li>Transitioned into an onsite infrastructure consulting role, providing technical guidance and hands-on data center support, maintaining server availability and resolving escalated infrastructure issues.</li>
+                        <li>Managed end-to-end incident and service request lifecycles using ServiceNow and JIRA, working closely with client stakeholders to prioritize issues and ensure SLA adherence.</li>
+                        <li>Acted as primary point of contact for US-based client teams, gathering technical and business requirements, communicating issue status, and delivering operational reports.</li>
+                        <li>Leveraged Excel and SQL to process, validate, and analyze operational data, translating findings into structured insights and recommendations for client stakeholders.</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="five">
-        <h2>Projects</h2>
-        <div class="projects-grid">
+    <!-- ── PROJECTS (unchanged) ── -->
+    <section id="five" style="background: var(--white);">
+        <div class="section-inner">
+            <div class="section-label">Work Samples</div>
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <div class="section-divider"></div>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap:1.5rem;">
 
-            <!-- ── DBLens (NEW) ─────────────────────────────────────── -->
-            <div class="project-card">
-                <div class="project-image" style="background: linear-gradient(135deg, #0d3b2e, #1a6b4a); font-size: 3.5rem;">🔍</div>
-                <div class="project-content">
-                    <span class="project-badge">Open Source</span>
-                    <h3>DBLens — Database Optimization CLI</h3>
-                    <p>A lightweight Python CLI that connects to your database and surfaces real bottlenecks in seconds — slow queries, missing indexes, table bloat, cache pressure, lock contention, and long-running operations. No dashboards, no cloud setup. Just one command.</p>
-                    <p style="font-family: monospace; font-size: 0.88rem; background: #f4f4f4; padding: 8px 12px; border-radius: 5px; color: #1a6b4a; margin-top: 8px;">dblens sqlite test_dblens.db</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Snowflake</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">CLI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/architkgangal/dblens" target="_blank" class="project-link">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            GitHub
-                        </a>
-                        <a href="https://deepwiki.com/architkgangal/dblens" target="_blank" class="project-link">
-                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-                            Deep Wiki
-                        </a>
+                <div style="background:var(--cream); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='none'">
+                    <div style="height:160px; background:linear-gradient(135deg,#0d3b2e,#1a6b4a); display:flex; align-items:center; justify-content:center; font-size:3rem;">🔍</div>
+                    <div style="padding:1.5rem;">
+                        <span style="background:var(--teal);color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;">Open Source</span>
+                        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin:0.8rem 0 0.6rem;">DBLens — Database Optimization CLI</h3>
+                        <p style="font-size:0.9rem;color:#555;line-height:1.7;">Python CLI that surfaces real database bottlenecks — slow queries, missing indexes, table bloat, cache pressure, and lock contention — across 5 database engines.</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">Python</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">PostgreSQL</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">MongoDB</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">Snowflake</span>
+                        </div>
+                        <a href="https://github.com/architkgangal/dblens" target="_blank" style="display:inline-flex;align-items:center;gap:5px;color:var(--teal);font-weight:600;font-size:0.85rem;text-decoration:none;margin-top:1rem;">GitHub →</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- existing cards -->
-            <div class="project-card">
-                <div class="project-image"></div>
-                <div class="project-content">
-                    <h3>ETL REST API Platform</h3>
-                    <p>High-performance REST API platform supporting 1M+ daily financial transactions with 99.7% uptime. Reduced operational overhead by 38% and improved API response times by 27%.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Spring Boot</span>
-                        <span class="tech-tag">Kafka</span>
-                        <span class="tech-tag">AWS</span>
-                        <span class="tech-tag">Oracle</span>
+                <div style="background:var(--cream); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='none'">
+                    <div style="height:160px; background:linear-gradient(135deg,#1a3a5c,#2E5090); display:flex; align-items:center; justify-content:center; font-size:3rem;">🧠</div>
+                    <div style="padding:1.5rem;">
+                        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:0.6rem;">AI-Powered RAG System</h3>
+                        <p style="font-size:0.9rem;color:#555;line-height:1.7;">Retrieval-Augmented Generation system for academic research with React interface and fully local AI stack. Targeted for institutional adoption at CSU CIS department.</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">React</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">LlamaIndex</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">Chroma</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">Ollama</span>
+                        </div>
+                        <a href="https://github.com/architkgangal/RAG-Project" target="_blank" style="display:inline-flex;align-items:center;gap:5px;color:var(--teal);font-weight:600;font-size:0.85rem;text-decoration:none;margin-top:1rem;">GitHub →</a>
                     </div>
                 </div>
-            </div>
 
-            <div class="project-card">
-                <div class="project-image"></div>
-                <div class="project-content">
-                    <h3>AI-Powered RAG System</h3>
-                    <p>Retrieval-Augmented Generation system for academic research with React-based interface and local AI stack. Designed for institutional adoption within the CIS department.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LlamaIndex</span>
-                        <span class="tech-tag">Chroma</span>
-                        <span class="tech-tag">Ollama</span>
-                    </div>
-                    <a href="https://github.com/architkgangal/RAG-Project" target="_blank" class="project-link" style="display:inline-flex; margin-top:1rem;">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right:5px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image"></div>
-                <div class="project-content">
-                    <h3>AI CFO Platform</h3>
-                    <p>AI-powered financial analytics platform with real-time forecasting, anomaly detection, and interactive KPI dashboards. Built with distributed architecture and role-based access controls.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">PHP</span>
-                        <span class="tech-tag">AI/ML</span>
-                    </div>
-                    <a href="https://github.com/architkgangal/AI_CFO" target="_blank" class="project-link" style="display:inline-flex; margin-top:1rem;">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right:5px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image"></div>
-                <div class="project-content">
-                    <h3>Research Classification System</h3>
-                    <p>2nd Place winner at CSU Hackathon. AI-powered research paper classification system with React chatbot interface and Ollama3 integration for intelligent insights.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Ollama3</span>
-                        <span class="tech-tag">ML</span>
-                        <span class="tech-tag">NLP</span>
+                <div style="background:var(--cream); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='none'">
+                    <div style="height:160px; background:linear-gradient(135deg,#2d1a4a,#5b3a8a); display:flex; align-items:center; justify-content:center; font-size:3rem;">💼</div>
+                    <div style="padding:1.5rem;">
+                        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:0.6rem;">AI CFO Platform</h3>
+                        <p style="font-size:0.9rem;color:#555;line-height:1.7;">AI-powered financial analytics platform with real-time forecasting, anomaly detection, and interactive KPI dashboards. Built with distributed architecture and role-based access controls.</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">React</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">Python</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">PHP</span>
+                        </div>
+                        <a href="https://github.com/architkgangal/AI_CFO" target="_blank" style="display:inline-flex;align-items:center;gap:5px;color:var(--teal);font-weight:600;font-size:0.85rem;text-decoration:none;margin-top:1rem;">GitHub →</a>
                     </div>
                 </div>
-            </div>
 
-            <div class="project-card">
-                <div class="project-image"></div>
-                <div class="project-content">
-                    <h3>Airbnb Data Pipeline</h3>
-                    <p>End-to-end PySpark batch data pipeline processing Airbnb listings and reviews. Implements ETL workflows, data cleaning, joins, aggregations, UDFs, Spark SQL, sentiment analysis on review text, and batch output management for analytics-ready datasets.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">PySpark</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Spark SQL</span>
-                        <span class="tech-tag">ETL</span>
-                        <span class="tech-tag">Data Engineering</span>
+                <div style="background:var(--cream); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='none'">
+                    <div style="height:160px; background:linear-gradient(135deg,#1a3d2b,#2d7a4f); display:flex; align-items:center; justify-content:center; font-size:3rem;">🔄</div>
+                    <div style="padding:1.5rem;">
+                        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:0.6rem;">Airbnb Data Pipeline</h3>
+                        <p style="font-size:0.9rem;color:#555;line-height:1.7;">End-to-end PySpark batch ETL pipeline processing Airbnb listings and reviews with custom UDFs for sentiment analysis and partitioned output for Databricks and AWS Glue.</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">PySpark</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">Spark SQL</span>
+                            <span style="background:#fff;border:1px solid var(--border);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:20px;">ETL</span>
+                        </div>
+                        <a href="https://github.com/architkgangal/airbnb_spark_pipeline" target="_blank" style="display:inline-flex;align-items:center;gap:5px;color:var(--teal);font-weight:600;font-size:0.85rem;text-decoration:none;margin-top:1rem;">GitHub →</a>
                     </div>
-                    <a href="https://github.com/architkgangal/airbnb_spark_pipeline" target="_blank" class="project-link" style="display:inline-flex; margin-top:1rem;">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right:5px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View on GitHub
-                    </a>
                 </div>
-            </div>
 
+            </div>
         </div>
     </section>
 
+    <!-- ── CONTACT ── -->
     <section id="six">
-        <h2>Contact Me</h2>
-        <form class="contact-form" action="#" method="POST">
-            <div class="form-group"><input type="text" placeholder="Name" required></div>
-            <div class="form-group"><input type="email" placeholder="Email" required></div>
-            <div class="form-group"><textarea placeholder="Message" required></textarea></div>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
+        <div class="section-inner">
+            <div class="section-label">Get In Touch</div>
+            <h2 class="section-title">Contact <span>Me</span></h2>
+            <div class="section-divider"></div>
+            <form class="contact-form">
+                <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+                <div class="form-group"><input type="email" placeholder="Your Email" required></div>
+                <div class="form-group"><textarea placeholder="Your Message" required></textarea></div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
     </section>
 
     <footer>
-        <p>© 2025 Archit Keshav Gangal. All rights reserved.</p>
-        <p>Built with passion for technology and innovation</p>
+        <p>© 2025 Archit Keshav Gangal &nbsp;·&nbsp; Technical Consultant & Software Engineer</p>
+        <p style="margin-top:0.5rem;">Built with intention, not inflation.</p>
     </footer>
 
     <script>
+        // Smooth scroll for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (target) {
+                    // Close mobile menu if open
+                    hamburger.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                    setTimeout(() => {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
             });
         });
+
+        // Hamburger toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Close menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            }
+        });
+
+        // Contact form
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for your message! I will get back to you soon.');
